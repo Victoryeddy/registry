@@ -46,15 +46,18 @@ contract RegistryTest is Test {
         vm.startPrank(alice);
 
         uint256 aliceBalanceBefore = address(alice).balance;
-        console2.log(aliceBalanceBefore);
+        // console2.log(aliceBalanceBefore);
 
         registry.register{value: amountToPay}();
 
         uint256 aliceBalanceAfter = address(alice).balance;
-        console2.log(aliceBalanceAfter);
+        // console2.log(aliceBalanceAfter);
 
         bool isTrue = registry.isRegistered(alice);
 
-        console2.log(isTrue);
+        assertTrue(isTrue, "Did not register user");
+        // assertEq(address(registry).balance, registry.PRICE(), "Unexpected registry balance");
+
+        // console2.log(isTrue);
     }
 }
